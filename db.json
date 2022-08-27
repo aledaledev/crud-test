@@ -6,9 +6,14 @@
       "id": 1
     },
     {
-      "nombre": "Alejandro Salas",
-      "email": "ale@salas.com",
-      "id": 2
+      "nombre": "Mariano",
+      "email": "marianodasilva@gmail.com",
+      "id": "7af381cd-e344-4a62-b83e-97f7e922ca60"
+    },
+    {
+      "nombre": "Alejandro",
+      "email": "aledale@dev.com",
+      "id": "60095ca7-cf03-4419-97c9-6d9518365117"
     }
   ]
 }
