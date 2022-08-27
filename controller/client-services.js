@@ -25,24 +25,23 @@ const crearNuevaLinea = (nombre, email, id) => {
         </td>`;
     linea.innerHTML = contenido;
     const btn = linea.querySelector('button');
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', async () => {
         const id = btn.id;
-        apiServices.eliminarCliente(id)    
-        .then(response => {
-            console.log(response)  //si todo salio bien (no pasa nada pero es una buena practica)
-        })
-        .catch(err=> alert(err))
+        try {
+            await apiServices.eliminarCliente(id)
+            //console.log(response)  si todo salio bien (no pasa nada pero es una buena practica)
+        } catch (err) { err => alert(err) }
     })
     return linea
 }
 
 const table = document.querySelector('[data-table]');
 apiServices      //se ejecuta en todo momento
-.listaCLientes()     //dependiendo que de que nos de
-.then(data => {     //si todo salio bien
-    data.forEach(({nombre,email,id}) => {   //desestructuracion
-        const nuevaLinea = crearNuevaLinea(nombre,email,id);    //contenido html
-        table.appendChild(nuevaLinea);      //
-    });
-})
-.catch(err => alert('hubo un error'))    //si existe algun error
+    .listaCLientes()     //dependiendo que de que nos de
+    .then(data => {     //si todo salio bien
+        data.forEach(({ nombre, email, id }) => {   //desestructuracion
+            const nuevaLinea = crearNuevaLinea(nombre, email, id);    //contenido html
+            table.appendChild(nuevaLinea);      //
+        });
+    })
+    .catch(err => alert('hubo un error'))    //si existe algun error
