@@ -1,8 +1,8 @@
 {
   "perfil": [
     {
-      "nombre": "Harland Lohora",
-      "email": "harland@alura.com",
+      "nombre": "Matias",
+      "email": "martinsoprano@gmail.com",
       "id": 1
     },
     {
@@ -14,6 +14,11 @@
       "nombre": "Pepe",
       "email": "Mamahuevaso@gmail.com",
       "id": "8a509c23-f3af-4e36-ae7e-df2b7e0317b5"
+    },
+    {
+      "nombre": "Mariano",
+      "email": "boom@alura.com",
+      "id": "033021fb-2e86-4467-8c46-efcaa214cff7"
     }
   ]
 }

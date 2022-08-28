@@ -17,7 +17,7 @@ const crearNuevaLinea = (nombre, email, id) => {
                     <button
                         class="simple-button simple-button--delete"
                         type="button"
-                        id=${id}>       <!--le estamos pasando id parametro con el respectivo id del usuario-->  
+                        id=${id}> 
                         Eliminar
                     </button>
                 </li>
@@ -35,13 +35,27 @@ const crearNuevaLinea = (nombre, email, id) => {
     return linea
 }
 
-const table = document.querySelector('[data-table]');
-apiServices      //se ejecuta en todo momento
+(async () => {
+    const table = document.querySelector('[data-table]');
+    try {
+        const getClients = await apiServices.listaCLientes();
+        getClients.forEach(({ nombre, email, id }) => {                  //desestructuracion
+            const nuevaLinea = crearNuevaLinea(nombre, email, id);
+            table.appendChild(nuevaLinea);
+        });
+    } catch {() => alert('hubo un error')}
+})();
+
+/*apiServices      //se ejecuta en todo momento
     .listaCLientes()     //dependiendo que de que nos de
     .then(data => {     //si todo salio bien
         data.forEach(({ nombre, email, id }) => {   //desestructuracion
             const nuevaLinea = crearNuevaLinea(nombre, email, id);    //contenido html
-            table.appendChild(nuevaLinea);      //
+            table.appendChild(nuevaLinea);
         });
     })
-    .catch(err => alert('hubo un error'))    //si existe algun error
+    .catch(err => alert('hubo un error'))    //si existe algun error */
+
+//insertar parametro id en el url (html)
+//insertar id al boton (html)
+//desestructuracion

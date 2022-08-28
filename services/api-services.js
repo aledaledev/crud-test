@@ -1,17 +1,15 @@
-/*
-    CRUD    - metodos HTTP
+/*  CRUD    - metodos HTTP
     create  - POST          -> enviar información a procesar
     read    - GET           -> obtener datos de un recurso determinado  
     update  - PUT/PATCH     -> reemplaza todas las informaciones de un recurso en particular/actualiza parcialmente los datos de un producto
-    delete  - DELETE        -> eliminar algún recurso
-*/
+    delete  - DELETE        -> eliminar algún recurso           */
+
 //El HTTP es el protocolo responsable de la comunicación de sitios en la web.
-const listaCLientes = () => fetch("http://localhost:3000/perfil").then(response => response.json());    //abre una conexion (GET implicito) y nos devuelve algo (response) a traves del .then
-//si pasaba que ingresabs a la pag sin ejecutar el servidor local nos mandaria algun error r
-//creamos un servidor local con json-server y usamos ajax para traer ese json del servidor
-const crearCliente = (nombre, email) => {    //recibe parametros
+const listaCLientes = () => fetch("http://localhost:3000/perfil").then(response => response.json());    //abre una conexion (GET implicito) y nos devuelve algo, luego trabajo con lo que me da (response)
+
+const crearCliente = (nombre, email) => {               //recibe parametros
     return fetch("http://localhost:3000/perfil", {      //abre una peticion
-        method: "POST",         //actualizamos
+        method: "POST",                                 //actualizamos
         headers: {
             "content-type": "application/json",
         },
@@ -24,11 +22,11 @@ const eliminarCliente = (id) => {
     })
 }
 const detalleCliente = (id) => {
-    return fetch(`http://localhost:3000/perfil/${id}`).then(response => response.json());   //obtendra datos del cliente
+    return fetch(`http://localhost:3000/perfil/${id}`).then(response => response.json());   //obtendra objeto de un cliente en especifico
 }
 const actualizarCliente = (nombre, email, id) => {
     return fetch(`http://localhost:3000/perfil/${id}`, {
-        method: 'PUT',   //editamos
+        method: 'PUT',                                    //editamos
         headers: {
             "Content-type": "application/json",
         },
@@ -44,3 +42,10 @@ export const apiServices = {     //encapsula las funciones a exportar
     detalleCliente,
     actualizarCliente,
 };
+
+//creamos un servidor local con json-server y usamos ajax para traer ese json del servidor
+//export e inport
+//return fetch(url,{method,headers,body})
+//response => response.json()
+//uuid.v4()
+//JSON.parse() y JSON.Stringify({})
